@@ -1,8 +1,4 @@
-tri = lambda a: [a//(3**(9-x))%3 for x in range(10)]
-
-crz = lambda a, b: [(digits_c := [[[1, 0, 0],[1, 0, 2],[2, 2, 1]][db][da] for da, db in zip(tri(a), tri(b))]), sum(digits_c[x]*(3**(9-x)) for x in range(10))][1]
-# Recalculating digits_c every time was too slow
-
+crz = lambda a, b: [(digits_c := [[[1, 0, 0],[1, 0, 2],[2, 2, 1]][db][da] for da, db in zip([a//(3**(9-x))%3 for x in range(10)], [b//(3**(9-x))%3 for x in range(10)])]), sum(digits_c[x]*(3**(9-x)) for x in range(10))][1]
 rotate = lambda i: i//3+(i%3)*(3**9)
 
 def mal(code):
