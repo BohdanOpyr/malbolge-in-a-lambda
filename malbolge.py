@@ -1,23 +1,13 @@
+tri = lambda a: [a//(3**(9-x))%3 for x in range(10)]
+
 def crz(a, b):
-    digits_a = []
-    for _ in range(10):
-        digits_a.insert(0, a%3)
-        a //= 3
-    digits_b = []
-    for _ in range(10):
-        digits_b.insert(0, b%3)
-        b //= 3
     table = [
         [1, 0, 0],
         [1, 0, 2],
         [2, 2, 1]
     ]
-    digits_c = []
-    for da, db in zip(digits_a, digits_b):
-        digits_c.append(table[db][da])
-    result = 0
-    for x in range(10):
-        result += digits_c[x]*(3**(9-x))
+    digits_c = [table[db][da] for da, db in zip(tri(a), tri(b))]
+    result = sum(digits_c[x]*(3**(9-x))for x in range(10))
     return result
 
 def rotate(i):
